@@ -25,7 +25,7 @@ public class GoalController {
     @GetMapping("/{id}")
     public String getGoalById(@PathVariable int id, Model model) {
         model.addAttribute("goal", goalService.getGoalById(id));
-        model.addAttribute("task", taskService.getAllTasksByGoalId(id));
+        model.addAttribute("taskList", taskService.getAllTasksByGoalId(id));
         return "goal-detail";
     }
 

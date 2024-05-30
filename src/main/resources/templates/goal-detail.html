@@ -10,6 +10,8 @@
   <title>Goal Detail</title>
 </head>
 <body>
+
+<!-- Begin Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <ul class="nav justify-content-end">
     <li class="nav-item">
@@ -23,6 +25,8 @@
     </li>
   </ul>
 </nav>
+<!--End Nav Bar-->
+
 <div class="container">
   <h1>Goal Detail</h1>
   <div class="card">
@@ -33,15 +37,34 @@
       <p class="card-text" data-th-text=" 'Details: '+${goal.details}"></p>
       <p class="card-text" data-th-text=" 'Target Date: '+${goal.targetDate}"></p>
       <p class="card-text" data-th-text=" 'Status: '+${goal.status}"></p>
-      <p class="card-text" data-th-text=" 'Task Title: '+${task.title}"></p>
+
       <div class="container">
-        <h2>Create New Goals</h2>
+        <h2>Create New Task</h2>
         <form action="#" th:action="@{/tasks/create/{id} (id=${goal.goalId})}"  method="post" style="margin-bottom: 10px;">
           <input type="text" id="title" name="title" placeholder="Title"/>
           <input type="text" id="details" name="details" placeholder="Details"/>
           <button type="submit" class="btn btn-primary">Create New Goal</button>
         </form>
       </div>
+
+      <div class="scrollable" style="height: 350px; overflow-y: auto; margin-bottom: 20px;">
+        <table class="table table-striped">
+          <tr>
+            <th>Task ID</th>
+            <th>Task Title</th>
+            <th>Task Details</th>
+          </tr>
+          <tr data-th-each="task: ${taskList}">
+            <td>
+              <a data-th-href="@{/tasks/{id}( id=${task.taskId})}" data-th-text="${task.taskId}"></a>
+            </td>
+            <td data-th-text="${task.title}"></td>
+            <td data-th-text="${task.details}"></td>
+          </tr>
+        </table>
+      </div>
+
+
       <a data-th-href="@{/goals/update/{id} (id=${goal.goalId})}" class="btn btn-primary">Edit Goal</a>
       <a data-th-href="@{/goals/delete/{id} (id=${goal.goalId})}" class="btn btn-danger">Delete Goal</a>
       <a href="/goals/all" class="btn btn-primary">Go back</a>

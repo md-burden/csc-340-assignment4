@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-    @Query(value = "select * from task where goal_id = :#{#goalId}", nativeQuery = true)
+    @Query(value = "select * from task where goal_id = :goalId", nativeQuery = true)
     public List<Task> getTasksByGoalId(@Param("goalId") int goalId);
 }

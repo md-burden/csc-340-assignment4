@@ -4,6 +4,8 @@ import com.matthewburden.assignment4.goal.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskService {
 
@@ -20,7 +22,15 @@ public class TaskService {
     taskRepository.save(task);
     }
 
-    public Object getAllTasksByGoalId(int id){
+    public List<Task> getAllTasksByGoalId(int id){
         return taskRepository.getTasksByGoalId(id);
+    }
+
+    public Task getTaskById(int id){
+        return taskRepository.findById(id).orElse(null);
+    }
+
+    public void deleteTaskById(int id){
+        taskRepository.deleteById(id);
     }
 }

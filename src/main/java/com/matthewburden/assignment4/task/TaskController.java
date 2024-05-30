@@ -26,9 +26,30 @@ public class TaskController {
 
     }
 
-    // TODO: Upadte
 
-    // TODO: Delete
+    @PostMapping("/update")
+    public String updateGoal(Task task){
+        taskService.createNewTask(task, task.getGoal());
+        return "redirect:" + task.getTaskId();
+    }
 
-    // TODO: View 1 task with all details
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable int id, Model model){
+        model.addAttribute("task", taskService.getTaskById(id));
+        return "task-update";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteTask(@PathVariable int id){
+        int goalId = taskService.getTaskById(id).getGoal().getGoalId();
+        taskService.deleteTaskById(id);
+        return "redirect:/goals/" + goalId;
+    }
+
+    @GetMapping("/{id}")
+    public Object getTask(@PathVariable int id, Model model){
+        model.addAttribute("task", taskService.getTaskById(id));
+        return "task-detail";
+    }
 }

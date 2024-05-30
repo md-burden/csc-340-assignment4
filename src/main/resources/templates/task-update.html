@@ -11,31 +11,31 @@
 
     <style>
         input[type=text], select {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         input[type=submit] {
-          width: 100%;
-          background-color: #04AA6D;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
+            width: 100%;
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
-        input, label{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        }
+        /*input, label{*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -54,27 +54,24 @@
 </nav>
 <div class="container">
     <h1>Goal Update</h1>
-    <form action="/goals/update" method="post">
+    <form action="/tasks/update" method="post">
 
         <section>
             <div style="float: left; margin-right: 20px;">
-                <label style="">Goal ID</label>
-                <input type="number" id="goalId" name="goalId" data-th-value="${goal.goalId}" style="" readonly/>
-                 </div>
-            <div style="float:left; margin-right: 20px;">
-                <label for="userId" style="">User ID</label>
-                <input type="number" id="userId" name="userId" data-th-value="${goal.userId}" style="" readonly/>
+                <label style="">Task ID</label>
+                <input type="number" id="goalId" name="goalId" data-th-value="${task.taskId}" style="" readonly/>
             </div>
             <div style="float:left; margin-right: 20px;">
-                <label for="targetDate" style="">Target Date</label>
-                <input type="date" id="targetDate" name="targetDate" data-th-value="${goal.targetDate}" style="" />
+                <label for="userId" style="">Goal ID</label>
+                <input type="number" id="userId" name="userId" data-th-value="${task.goal.goalId}" style="" readonly/>
             </div>
         </section>
 
+        <section>
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" data-th-value="${goal.title}"/>
+        <input type="text" id="title" name="title" data-th-value="${task.title}"/>
         <label for="details">Details</label>
-        <input type="text" id="details" name="details" data-th-value="${goal.details}"/>
+        <input type="text" id="details" name="details" data-th-value="${task.details}"/>
 
         <label for="status">Status</label>
         <select name="status" id="status">
@@ -84,6 +81,7 @@
             <option value="CANCELLED">Cancel</option>
         </select>
         <button type="submit">Save</button>
+        </section>
     </form>
 
 
