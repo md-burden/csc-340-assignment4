@@ -31,59 +31,111 @@
             cursor: pointer;
         }
 
-        /*input, label{*/
-        /*    display: flex;*/
-        /*    flex-direction: column;*/
-        /*    margin-bottom: 10px;*/
-        /*}*/
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input, label{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            background-color: #A1DD70;
+            border-color: #00000000
+        }
+
+        .btn-primary:hover {
+            color: #FFFFFF;
+            background-color: #799351;
+            border-color: #00000000
+        }
+
+      .btn-danger{
+        color: #FFFFFF
+        background-color: #EE4E4E70
+        border-color: #00000000
+      }
+
+    .btn-danger:hove{
+      color: #FFFFFF
+      background-color: #EE4E4E
+      border-color: #00000000
+    }
     </style>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e3f2fd;">
+<body style="background-color: #F6EEC9;">
+
+<!-- Begin Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #799351;">
+    <a class="navbar-brand" href="/" style="margin: 10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-card-checklist"
+             viewBox="0 0 16 16">
+            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+            <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+        </svg>
+    </a>
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="/" style="color: #ffff ">Goals</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Second</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Third</a>
+            <a class="nav-link active" aria-current="page" href="/tasks/all" style="color: #ffff ">Tasks</a>
         </li>
     </ul>
 </nav>
-<div class="container">
-    <h1>Goal Update</h1>
+<!-- End Nav Bar -->
+
+<div class="container" style="margin-top: 15px;">
+    <h1 style="text-align: center">Task Update</h1>
     <form action="/tasks/update" method="post">
 
         <section>
             <div style="float: left; margin-right: 20px;">
                 <label style="">Task ID</label>
-                <input type="number" id="goalId" name="goalId" data-th-value="${task.taskId}" style="" readonly/>
+                <input class="form-control" type="number" id="goalId" name="goalId" data-th-value="${task.taskId}" style="" readonly/>
             </div>
             <div style="float:left; margin-right: 20px;">
                 <label for="userId" style="">Goal ID</label>
-                <input type="number" id="userId" name="userId" data-th-value="${task.goal.goalId}" style="" readonly/>
+                <input class="form-control"  type="number" id="userId" name="userId" data-th-value="${task.goal.goalId}" style="" readonly/>
             </div>
         </section>
 
-        <section>
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" data-th-value="${task.title}"/>
+        <input class="form-control"  type="text" id="title" name="title" data-th-value="${task.title}"/>
         <label for="details">Details</label>
-        <input type="text" id="details" name="details" data-th-value="${task.details}"/>
+        <input class="form-control" type="text" id="details" name="details" data-th-value="${task.details}"/>
 
         <label for="status">Status</label>
-        <select name="status" id="status">
+        <select class="from-select" name="status" id="status">
             <option value="PENDING">Pending</option>
             <option value="INPROGRESS">In-progress</option>
             <option value="DONE">Done</option>
             <option value="CANCELLED">Cancel</option>
         </select>
-        <button type="submit">Save</button>
-        </section>
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Save</button>
     </form>
 
+    <a data-th-href="@{/goals/{id} (id=${task.goal.goalId})}" class="btn btn-primary" style="margin-top: 20px; margin-right:20px; float: left;">Go back</a>
 
 </div>
 </body>
