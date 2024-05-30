@@ -10,15 +10,17 @@ public class GoalService {
     GoalRepository goalRepository;
 
     public void createNewGoal(Goal goal) {
+        if(goalRepository.existsById(goal.getGoalId())){
+            goal = new Goal(goal);
+            goalRepository.save(goal);
+            return;
+        }
         goal = new Goal(goal.getTitle(), goal.getDetails(), goal.getTargetDate());
         goalRepository.save(goal);
     }
 
-    // TODO: Create update method
-    public void updateExisitingGoal(Goal goal) {}
-
-    public void deleteGoal(Goal goal) {
-        goalRepository.delete(goal);
+    public void deleteGoal(int id) {
+        goalRepository.deleteById(id);
     }
 
     public Object getAllUserGoals(){
