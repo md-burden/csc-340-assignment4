@@ -48,7 +48,7 @@ public class Task {
         this.goal = goal;
         this.title = title;
         this.details = details;
-        this.status = Status.PENDING;
+        this.status = Status.Pending;
     }
 
     public int getTaskId() {

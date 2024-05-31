@@ -81,11 +81,13 @@
 
         <label for="status">Status</label>
         <select class="form-select" name="status" id="status">
-            <option value="PENDING">Pending</option>
-            <option value="INPROGRESS">In-progress</option>
-            <option value="DONE">Done</option>
-            <option value="CANCELLED">Cancel</option>
+            <option value="${task.status}" selected="selected" th:text="${task.status}"></option>
+            <option value="Pending">Pending</option>
+            <option value="Started">Started</option>
+            <option value="Done">Done</option>
+            <option value="Cancelled">Cancelled</option>
         </select>
+
         <button class="btn btn-primary" type="submit" style="margin-top: 20px; margin-right:20px; float: left;">Save
         </button>
     </form>

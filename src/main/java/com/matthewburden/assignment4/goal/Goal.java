@@ -46,7 +46,7 @@ public class Goal {
         this.title = title;
         this.details = details;
         this.targetDate = targetDate;
-        this.status = Status.PENDING;
+        this.status = Status.Pending;
     }
 
     public Goal(Goal goal) {
