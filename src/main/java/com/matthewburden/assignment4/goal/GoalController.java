@@ -36,19 +36,19 @@ public class GoalController {
     }
 
     @PostMapping("/update")
-    public String updateGoal(Goal goal){
+    public String updateGoal(Goal goal) {
         goalService.createNewGoal(goal);
         return "redirect:" + goal.getGoalId();
     }
 
     @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable int id, Model model){
+    public String showUpdateForm(@PathVariable int id, Model model) {
         model.addAttribute("goal", goalService.getGoalById(id));
         return "goal-update";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteGoalById(@PathVariable int id){
+    public String deleteGoalById(@PathVariable int id) {
         goalService.deleteGoal(id);
         return "redirect:/goals/all";
     }

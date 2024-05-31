@@ -29,7 +29,8 @@ public class Goal {
     @NonNull
     private Status status;
 
-    public Goal() {}
+    public Goal() {
+    }
 
     public Goal(int goalId, int userId, @NonNull String title, String details, @NonNull Date targetDate, @NonNull Status status) {
         this.goalId = goalId;
@@ -48,7 +49,7 @@ public class Goal {
         this.status = Status.PENDING;
     }
 
-    public Goal(Goal goal){
+    public Goal(Goal goal) {
         this.goalId = goal.getGoalId();
         this.userId = goal.getUserId();
         this.title = goal.getTitle();

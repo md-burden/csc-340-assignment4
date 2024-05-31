@@ -9,46 +9,8 @@
             crossorigin="anonymous"></script>
     <title>Goal Detail</title>
 
-    <style>
-        .table-striped>tbody>tr:nth-child(odd)>th {
-                background-color: #A1DD70;
-            }
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 
-
-            .table-striped>tbody>tr:nth-child(odd)>td {
-                background-color: #A1DD7080;
-            }
-
-            .table-striped>tbody>tr:nth-child(even)>td {
-                background-color: #A1DD7040;
-            }
-
-
-            .btn-primary {
-                color: #ffffff;
-                background-color: #A1DD70;
-                border-color: #00000000
-            }
-
-            .btn-primary:hover {
-                color: #FFFFFF;
-                background-color: #799351;
-                border-color: #00000000
-            }
-
-          .btn-danger{
-            color: #FFFFFF
-            background-color: #EE4E4E70
-            border-color: #00000000
-          }
-
-        .btn-danger:hove{
-          color: #FFFFFF
-          background-color: #EE4E4E
-          border-color: #00000000
-        }
-
-    </style>
 </head>
 <body style="background-color: #F6EEC9;">
 
@@ -91,7 +53,8 @@
                 </div>
             </div>
 
-            <a data-th-href="@{/tasks/delete/{id} (id=${task.taskId})}" class="btn btn-danger" style="margin-top: 20px;">Delete Task</a>
+            <a data-th-href="@{/tasks/delete/{id} (id=${task.taskId})}" class="btn btn-danger"
+               style="margin-top: 20px;">Delete Task</a>
 
         </div>
     </div>

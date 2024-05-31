@@ -9,57 +9,39 @@
             crossorigin="anonymous"></script>
     <title>Goal List</title>
 
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+
     <style>
         input[type=text], select {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=date], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         input[type=submit] {
-          width: 100%;
-          background-color: #04AA6D;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
+            width: 100%;
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
-
-        input, label{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        }
-
-        .btn-primary {
-            color: #ffffff;
-            background-color: #A1DD70;
-            border-color: #00000000
-        }
-
-        .btn-primary:hover {
-            color: #FFFFFF;
-            background-color: #799351;
-            border-color: #00000000
-        }
-
-      .btn-danger{
-        color: #FFFFFF
-        background-color: #EE4E4E70
-        border-color: #00000000
-      }
-
-    .btn-danger:hove{
-      color: #FFFFFF
-      background-color: #EE4E4E
-      border-color: #00000000
-    }
     </style>
 </head>
 <body style="background-color: #F6EEC9;">
@@ -89,26 +71,28 @@
         <div style="display: flex;">
             <div style="float: left; margin-right: 20px;">
                 <label style="">Goal ID</label>
-                <input class="form-control" type="number" id="goalId" name="goalId" data-th-value="${goal.goalId}" style="" readonly/>
+                <input class="form-control" type="text" id="goalId" name="goalId" data-th-value="${goal.goalId}"
+                       readonly/>
             </div>
             <div style="float:left; margin-right: 20px;">
                 <label for="userId">User ID</label>
-                <input class="form-control" type="number" id="userId" name="userId" data-th-value="${goal.userId}" style="" readonly/>
+                <input class="form-control" type="text" id="userId" name="userId" data-th-value="${goal.userId}"
+                       readonly/>
             </div>
             <div style="float:left; margin-right: 20px;">
                 <label for="targetDate">Target Date</label>
-                <input class="form-control" type="date" id="targetDate" name="targetDate" data-th-value="${goal.targetDate}" style="" />
+                <input class="form-control" type="date" id="targetDate" name="targetDate"
+                       data-th-value="${goal.targetDate}"/>
             </div>
         </div>
 
 
+        <label for="title">Title</label>
+        <input class="form-control" type="text" id="title" name="title" data-th-value="${goal.title}"/>
 
-            <label for="title">Title</label>
-            <input class="form-control" type="text" id="title" name="title" data-th-value="${goal.title}"/>
 
-
-            <label for="details">Details</label>
-            <input class="form-control" type="text" id="details" name="details" data-th-value="${goal.details}"/>
+        <label for="details">Details</label>
+        <input class="form-control" type="text" id="details" name="details" data-th-value="${goal.details}"/>
 
 
         <label for="status">Status</label>
@@ -118,7 +102,8 @@
             <option value="DONE">Done</option>
             <option value="CANCELLED">Cancel</option>
         </select>
-        <button type="submit" class="btn btn-primary" style="margin-top: 20px; margin-right:20px; float: left;">Save</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px; margin-right:20px; float: left;">Save
+        </button>
 
     </form>
     <a data-th-href="@{/goals/{id} (id=${goal.goalId})}" class="btn btn-primary" style="margin-top: 20px;">Go back</a>

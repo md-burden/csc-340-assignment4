@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface GoalRepository extends JpaRepository<Goal,Integer> {
+public interface GoalRepository extends JpaRepository<Goal, Integer> {
     @Query(value = "select * from goal where user_id = :userId", nativeQuery = true)
-    public List<Task> getUserGoals(@Param("userId") int userId);
+    public List<Goal> getUserGoals(@Param("userId") int userId);
 }

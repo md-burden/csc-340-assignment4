@@ -9,46 +9,7 @@
             crossorigin="anonymous"></script>
     <title>Goal Detail</title>
 
-    <style>
-        .table-striped>tbody>tr:nth-child(odd)>th {
-                background-color: #A1DD70;
-            }
-
-
-            .table-striped>tbody>tr:nth-child(odd)>td {
-                background-color: #A1DD7080;
-            }
-
-            .table-striped>tbody>tr:nth-child(even)>td {
-                background-color: #A1DD7040;
-            }
-
-
-            .btn-primary {
-                color: #ffffff;
-                background-color: #A1DD70;
-                border-color: #00000000
-            }
-
-            .btn-primary:hover {
-                color: #FFFFFF;
-                background-color: #799351;
-                border-color: #00000000
-            }
-
-          .btn-danger{
-            color: #FFFFFF
-            background-color: #EE4E4E70
-            border-color: #00000000
-          }
-
-        .btn-danger:hove{
-          color: #FFFFFF
-          background-color: #EE4E4E
-          border-color: #00000000
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 
 </head>
 <body style="background-color: #F6EEC9;">
@@ -117,6 +78,7 @@
                         <th>Task ID</th>
                         <th>Task Title</th>
                         <th>Task Details</th>
+                        <th>Task Status</th>
                     </tr>
                     <tr data-th-each="task: ${taskList}">
                         <td>
@@ -125,6 +87,7 @@
                         </td>
                         <td data-th-text="${task.title}"></td>
                         <td data-th-text="${task.details}"></td>
+                        <td data-th-text="${task.status}"></td>
                     </tr>
                 </table>
             </div>

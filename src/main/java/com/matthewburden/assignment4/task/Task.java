@@ -6,7 +6,7 @@ import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="task")
+@Table(name = "task")
 public class Task {
 
     @Id
@@ -25,7 +25,8 @@ public class Task {
     @Nonnull
     private Status status;
 
-    public Task(){}
+    public Task() {
+    }
 
     public Task(int taskId, Goal goal, @Nonnull String title, String details, @Nonnull Status status) {
         this.taskId = taskId;
@@ -35,15 +36,15 @@ public class Task {
         this.status = status;
     }
 
-    public Task(Task task){
+    public Task(Task task, Goal goal) {
         this.taskId = task.getTaskId();
-        this.goal = task.getGoal();
+        this.goal = goal;
         this.title = task.getTitle();
         this.details = task.getDetails();
         this.status = task.getStatus();
     }
 
-    public Task(@Nonnull String title, String details, @Nonnull Goal goal){
+    public Task(@Nonnull String title, String details, @Nonnull Goal goal) {
         this.goal = goal;
         this.title = title;
         this.details = details;

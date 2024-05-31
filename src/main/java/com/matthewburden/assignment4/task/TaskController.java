@@ -19,7 +19,7 @@ public class TaskController {
 
 
     @PostMapping("/create/{id}")
-    public String showTaskForm(@ModelAttribute("task") Task task, @PathVariable int id){
+    public String showTaskForm(@ModelAttribute("task") Task task, @PathVariable int id) {
         Goal goal = goalService.getGoalById(id);
         taskService.createNewTask(task, goal);
         return "redirect:/goals/" + id;
@@ -28,27 +28,27 @@ public class TaskController {
 
 
     @PostMapping("/update")
-    public String updateGoal(Task task){
-        taskService.createNewTask(task, task.getGoal());
+    public String updateGoal(@RequestParam(value = "goalId", required = true) int goalId, Task task) {
+        taskService.updateTask(task, goalService.getGoalById(goalId));
         return "redirect:" + task.getTaskId();
     }
 
-    @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable int id, Model model){
-        model.addAttribute("task", taskService.getTaskById(id));
+    @GetMapping("/update/{taskId}")
+    public String showUpdateForm(@PathVariable int taskId, Model model) {
+        model.addAttribute("task", taskService.getTaskById(taskId));
         return "task-update";
     }
 
 
     @GetMapping("/delete/{id}")
-    public String deleteTask(@PathVariable int id){
+    public String deleteTask(@PathVariable int id) {
         int goalId = taskService.getTaskById(id).getGoal().getGoalId();
         taskService.deleteTaskById(id);
         return "redirect:/goals/" + goalId;
     }
 
     @GetMapping("/{id}")
-    public Object getTask(@PathVariable int id, Model model){
+    public Object getTask(@PathVariable int id, Model model) {
         model.addAttribute("task", taskService.getTaskById(id));
         return "task-detail";
     }
