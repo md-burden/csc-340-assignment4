@@ -98,9 +98,6 @@
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/" style="color: #ffff ">Goals</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/tasks/all" style="color: #ffff ">Tasks</a>
-        </li>
     </ul>
 </nav>
 <!-- End Nav Bar -->
@@ -109,34 +106,38 @@
     <h1 style="text-align: center">Task Update</h1>
     <form action="/tasks/update" method="post">
 
-        <section>
+        <div style="display: flex;">
             <div style="float: left; margin-right: 20px;">
                 <label style="">Task ID</label>
-                <input class="form-control" type="number" id="goalId" name="goalId" data-th-value="${task.taskId}" style="" readonly/>
+                <input class="form-control" type="number" id="goalId" name="goalId" data-th-value="${task.taskId}"
+                       style="" readonly/>
             </div>
-            <div style="float:left; margin-right: 20px;">
+            <div style="float:left; margin-right: auto;">
                 <label for="userId" style="">Goal ID</label>
-                <input class="form-control"  type="number" id="userId" name="userId" data-th-value="${task.goal.goalId}" style="" readonly/>
+                <input class="form-control" type="number" id="userId" name="userId" data-th-value="${task.goal.goalId}"
+                       style="" readonly/>
             </div>
-        </section>
+        </div>
+
 
         <label for="title">Title</label>
-        <input class="form-control"  type="text" id="title" name="title" data-th-value="${task.title}"/>
+        <input class="form-control" type="text" id="title" name="title" data-th-value="${task.title}"/>
+
+
         <label for="details">Details</label>
         <input class="form-control" type="text" id="details" name="details" data-th-value="${task.details}"/>
 
         <label for="status">Status</label>
-        <select class="from-select" name="status" id="status">
+        <select class="form-select" name="status" id="status">
             <option value="PENDING">Pending</option>
             <option value="INPROGRESS">In-progress</option>
             <option value="DONE">Done</option>
             <option value="CANCELLED">Cancel</option>
         </select>
-        <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Save</button>
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px; margin-right:20px; float: left;">Save
+        </button>
     </form>
-
-    <a data-th-href="@{/goals/{id} (id=${task.goal.goalId})}" class="btn btn-primary" style="margin-top: 20px; margin-right:20px; float: left;">Go back</a>
-
+    <a data-th-href="@{/tasks/{id} (id=${task.taskId})}" class="btn btn-primary" style="margin-top: 20px; ">Go back</a>
 </div>
 </body>
 </html>

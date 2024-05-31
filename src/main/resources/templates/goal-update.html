@@ -77,9 +77,6 @@
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/" style="color: #ffff ">Goals</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/tasks/all" style="color: #ffff ">Tasks</a>
-        </li>
     </ul>
 </nav>
 <!-- End Nav Bar -->
@@ -89,7 +86,7 @@
     <form action="/goals/update" method="post">
 
 
-        <div class="col">
+        <div style="display: flex;">
             <div style="float: left; margin-right: 20px;">
                 <label style="">Goal ID</label>
                 <input class="form-control" type="number" id="goalId" name="goalId" data-th-value="${goal.goalId}" style="" readonly/>
